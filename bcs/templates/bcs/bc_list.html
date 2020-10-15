@@ -1,7 +1,16 @@
-<h1>Lista de BCs</h1>
+{% extends 'bcs/base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container">
+      <h1 class="title">Sistema LOBC - Localize o Bombeiro Comunitário</h1>
+    <h2 class="subtitle">Lista de Bombeiros Cominitários:</h2>
 
-{% for bc in bcs%}
-
-<p>{{bc}}</p>
-
-{% endfor %}
+    <ul>
+    {% for bc in bcs %}
+      <li><a href="">{{ bc }} - {{ bc.bc_usuario }}</a></li>
+  {% endfor %}
+  </ul>
+    </div>
+  </section>
+  
+{% endblock %}
