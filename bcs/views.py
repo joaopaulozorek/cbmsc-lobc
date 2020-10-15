@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .models import *
 
-# Create your views here.
+
+
+def bc_list(request):
+	bcs = Bc.objects.all()
+	return render(request, 'bcs/bc_list.html', {'bcs':bcs})
