@@ -59,6 +59,9 @@ class Cnh(models.Model):
 	cnh_condutor_emergencia = models.BooleanField(verbose_name="Condutor de Emergência?")
 	cnh_ultimo_cve = models.DateField(blank=True, null=True, verbose_name="Data do Último CVE:")
 
+	def get_categoria(self):
+		return CNH_CATEGORIA_CHOICES[self.cnh_categoria][1]
+
 	def __str__(self):
 		return self.cnh_numero
 
@@ -73,6 +76,12 @@ class Bc(models.Model):
 
 	bc_cnh = models.ForeignKey("Cnh", blank=True, null=True, on_delete=models.CASCADE, verbose_name="CNH:")
 	bc_mergulhador = models.BooleanField(blank=True, null=True, verbose_name="Mergulhador?")
+
+	def get_situacao(self):
+		if self.bc_situacao:
+			return 'Ativo'
+		else:
+			return 'Inativo'
 
 	def __str__(self):
 		return "BC "+self.bc_nome_de_guerra.upper()
@@ -111,6 +120,9 @@ class Usuario(models.Model):
 	usu_is_adm = models.BooleanField(default= False, verbose_name="Administrador do sistema?")
 	usu_data_de_cadastro = models.DateTimeField(default=timezone.now)
 	usu_ultima_atualizacao = models.DateTimeField(default=timezone.now)
+
+	def get_estado_civil(self):
+		return USUARIO_ESTADO_CIVIL_CHOICES[self.usu_estado_civil][1]
 
 	def __str__(self):
 		return self.usu_nome
