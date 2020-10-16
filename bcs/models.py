@@ -124,6 +124,9 @@ class Usuario(models.Model):
 	def get_estado_civil(self):
 		return USUARIO_ESTADO_CIVIL_CHOICES[self.usu_estado_civil][1]
 
+	def get_escolaridade(self):
+		return USUARIO_ESCOLARIDADE_CHOICES[self.usu_escolaridade][1]
+
 	def __str__(self):
 		return self.usu_nome
 

@@ -2,70 +2,111 @@
 {%load static %}
 {% block content %}
 
-<div class="container">
-  <h1 class="title">Sistema LOBC - Localize o Bombeiro Comunitário</h1>
-  <h2 class="subtitle">Detalhes do BC:</h2>
-</div>
+<div class="hero is-medium is-light is-bold">
 
-<section class="section">
+  <section class="section">
 
-  <div class="tile is-ancestor">
+    <div class="tile is-ancestor">
 
-    <div class="tile is-parent">
-      <div class="tile is-child box">
-        <div class="has-text-centered">
+      <div class="tile is-parent">
+        <div class="tile is-child box">
+          <div class="has-text-centered">
 
-          {% if bc.bc_usuario.usu_foto %}
-          <img class="avatar" src="../media/{{bc.bc_usuario.usu_foto}}">
-          {% else %}
-          <img class="avatar" src='{% static "img/sem-imagem.png" %}'>
-          {% endif %}
-          <p class="title">{{bc.bc_usuario.usu_nome}}</p>
-          <p class="subtitle">{{bc}}</p>
-          <p class="title">
-            <span class="tag is-link is-medium">{{bc.bc_graduacao}}</span>
-            <span class="tag is-success is-medium">{{bc.bc_usuario.usu_lotacao}}</span>
-          </p>
-        </div>
-        
-            
+            {% if bc.bc_usuario.usu_foto %}
+            <img class="avatar" src="../media/{{bc.bc_usuario.usu_foto}}">
+            {% else %}
+            <img class="avatar" src='{% static "img/sem-imagem.png" %}'>
+            {% endif %}
+            <p class="title">{{bc.bc_usuario.usu_nome}}</p>
+            <p class="subtitle">{{bc}}</p>
+            <p class="title">
+              <span class="tag is-medium">{{bc.bc_graduacao}}</span>
+              <span class="tag is-medium">{{bc.bc_usuario.usu_lotacao}}</span>
+              <a href="https://api.whatsapp.com/send?phone=55{{bc.bc_usuario.usu_whatsapp}}" target="_blank">
+                <span class="tag is-success is-rounded is-medium">
+                  <i class="fab fa-whatsapp"></i>
+                  ⁪⁪&nbsp;WhatsApp
+                </span>
+              </a>
+              <a href="tel:{{bc.bc_usuario.usu_telefone}}" target="_blank">
+                <span class="tag is-link is-rounded is-medium">
+                  <i class="fas fa-phone-alt"></i>
+                  &nbsp;Ligar
+                </span>
+              </a>
+            </p>
+
+          </div>
+          
+
           <div class="column is-8 is-offset-2">
-                <!-- START ARTICLE -->
-                <div class="article">
-                  <br>
-              <p class="title has-text-centered">Informações Pessoais</p>
-              <p><strong>Data de nasc.: </strong>{{bc.bc_usuario.usu_data_de_nascimento}}</p>
-              <p><strong>Filiação: </strong>{{bc.bc_usuario.usu_filiacao}}</p>
-              <p><strong>Estado civil: </strong>{{bc.bc_usuario.get_estado_civil}}</p>
-              <p><strong>CPF: </strong>000.000.000-00</p>
-              <p><strong>RG: </strong>0.000.000</p>
-              <p class="subtitle has-text-centered">Informações Adicionais</p>
-              <p><strong>Nome de Guerra: </strong>{{bc}}</p>
-              <p><strong>Graduação: </strong>{{bc.bc_graduacao}}</p>
-              <p><strong>Lotação: </strong>{{bc.bc_usuario.usu_lotacao}}</p>
-              <p><strong>Data da Formatura: </strong>{{bc.bc_data_formatura}}</p>
-              <p><strong>Data da ultima promoção: </strong>{{bc.bc_data_ultima_promocao}}</p>
-              <p><strong>Status: </strong>{{bc.get_situacao}}</p>
-              {% if not bc.bc_cnh %}
-                <p><strong>CNH: </strong>Não Possui</p>
-              {% else %}
-                <p><strong>CNH Cat.: </strong>{{bc.bc_cnh.get_categoria}} / <strong>n.: </strong>00000000 / <strong>Validade: </strong>{{bc.bc_cnh.cnh_validade}}</p>
-              {% endif %}
-              {% if bc.bc_cnh.cnh_condutor_emergencia %}
-                <p><strong>Condutor de Emergência: </strong>Sim</p>
-                <p><strong>Data do Último CVE: </strong>{{bc.bc_cnh.cnh_ultimo_cve}}</p>
-              {% endif %}
-              {% if bc.bc_mergulhador %}
-                <p><strong>Megulhador: </strong>Sim</p>
-              {% else %}
-                <p><strong>Megulhador: </strong>Não</p>
-              {% endif %}
+            <!-- START ARTICLE -->
+            <div class="article">
+              <br>
+              <div class="tile is-ancestor">
+                <div class="tile is-4 is-vertical is-parent">
+                  <div class="tile is-child box">
+                    <p class="title">Informações Pessoais</p>
+                    <p><strong>Data de nasc.: </strong>{{bc.bc_usuario.usu_data_de_nascimento}}</p>
+                    <p><strong>Filiação: </strong>{{bc.bc_usuario.usu_filiacao}}</p>
+                    <p><strong>Estado civil: </strong>{{bc.bc_usuario.get_estado_civil}}</p>
+                    <p><strong>CPF: </strong>000.000.000-00</p>
+                    <p><strong>RG: </strong>0.000.000</p>
+                  </div>
+                  <div class="tile is-child box">
+                    <p class="title">Contato</p>
+                    <p><strong>Telefone: </strong>{{bc.bc_usuario.usu_telefone}}</p>
+                    <p><strong>WhatsApp: </strong>{{bc.bc_usuario.usu_whatsapp}}</p>
+                    {% if bc.bc_usuario.usu_telefone_residencial %}
+                    <p><strong>Telefone Residencial: </strong>{{bc.bc_usuario.usu_telefone_residencial}}</p>
+                    {% endif %}
+                    <p><strong>E-mail: </strong>{{bc.bc_usuario.usu_email}}</p>
+                    {% if bc.bc_usuario.usu_facebook %}
+                    <p><strong>Facebook: </strong>{{bc.bc_usuario.usu_facebook}}</p>
+                    {% endif %}
+                    {% if bc.bc_usuario.usu_instagram %}
+                    <p><strong>Instagram: </strong>{{bc.bc_usuario.usu_instagram}}</p>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child box">
+                    <p class="title">Informações Adicionais</p>
+                    <p><strong>Nome de Guerra: </strong>{{bc}}</p>
+                    <p><strong>Graduação: </strong>{{bc.bc_graduacao}}</p>
+                    <p><strong>Lotação: </strong>{{bc.bc_usuario.usu_lotacao}}</p>
+                    <p><strong>Data da Formatura: </strong>{{bc.bc_data_formatura}}</p>
+                    <p><strong>Data da última promoção: </strong>{{bc.bc_data_ultima_promocao}}</p>
+                    <p><strong>Status: </strong>{{bc.get_situacao}}</p>
+                    {% if not bc.bc_cnh %}
+                    <p><strong>CNH: </strong>Não Possui</p>
+                    {% else %}
+                    <p><strong>CNH Cat.: </strong>{{bc.bc_cnh.get_categoria}} / <strong>n.: </strong>00000000 / <strong>Validade: </strong>{{bc.bc_cnh.cnh_validade}}</p>
+                    {% endif %}
+                    {% if bc.bc_cnh.cnh_condutor_emergencia %}
+                    <p><strong>Condutor de Emergência: </strong>Sim</p>
+                    <p><strong>Data do Último CVE: </strong>{{bc.bc_cnh.cnh_ultimo_cve}}</p>
+                    {% endif %}
+                    {% if bc.bc_mergulhador %}
+                    <p><strong>Mergulhador: </strong>Sim</p>
+                    {% else %}
+                    <p><strong>Mergulhador: </strong>Não</p>
+                    {% endif %}
+                    {% if bc.bc_usuario.usu_escolaridade %}
+                    <p><strong>Escolaridade: </strong>{{bc.bc_usuario.get_escolaridade}}</p>
+                    {% endif %}
+                    {% if bc.bc_usuario.usu_area_de_formacao %}
+                    <p><strong>Área de Formação: </strong>{{bc.bc_usuario.usu_area_de_formacao}}</p>
+                    {% endif %}
 
-
+                  </div>
+                </div>
+              </div>
+              <span>Atualizado em: {{bc.bc_usuario.usu_ultima_atualizacao}}</span>
             </div>
           </div>
-    </div>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-{% endblock %}
+  {% endblock %}
