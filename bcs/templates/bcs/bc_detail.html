@@ -37,7 +37,7 @@
             </p>
 
           </div>
-          
+
 
           <div class="column is-8 is-offset-2">
             <!-- START ARTICLE -->
@@ -75,8 +75,10 @@
                     <p><strong>Nome de Guerra: </strong>{{bc}}</p>
                     <p><strong>Graduação: </strong>{{bc.bc_graduacao}}</p>
                     <p><strong>Lotação: </strong>{{bc.bc_usuario.usu_lotacao}}</p>
+                    {% if bc.bc_data_formatura %}
                     <p><strong>Data da Formatura: </strong>{{bc.bc_data_formatura}}</p>
                     <p><strong>Data da última promoção: </strong>{{bc.bc_data_ultima_promocao}}</p>
+                    {% endif %}
                     <p><strong>Status: </strong>{{bc.get_situacao}}</p>
                     {% if not bc.bc_cnh %}
                     <p><strong>CNH: </strong>Não Possui</p>

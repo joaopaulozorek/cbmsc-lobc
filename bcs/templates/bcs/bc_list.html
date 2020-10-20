@@ -8,6 +8,7 @@
     <ul>
     {% for bc in bcs %}
       <li><a href="{% url 'bc_detail' user=bc.bc_usuario.usu_user %}">{{ bc }} - {{ bc.bc_usuario }}</a></li>
+
   {% endfor %}
   </ul>
     </div>

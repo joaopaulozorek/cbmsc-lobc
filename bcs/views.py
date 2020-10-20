@@ -5,7 +5,7 @@ from .models import *
 
 def bc_list(request):
 	bcs = Bc.objects.all()
-	return render(request, 'bcs/bc_list.html', {'bcs':bcs})
+	return render(request, 'bcs/bc_list.html', {'bcs':bcs})	
 
 def bc_detail(request, user):
 	usuario = get_object_or_404(Usuario, usu_user__username=user)
