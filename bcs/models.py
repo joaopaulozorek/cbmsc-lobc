@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-CNH_CATEGORIA_CHOICES = [	(0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'), (5, 'AB'), (6, 'AC'), (7, 'AD'), (8, 'AE')]
+CNH_CATEGORIA_CHOICES = [	(0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'), (5, 'AB'), (6, 'AC'), (7, 'AD'), (8, 'AE'), (9, 'Não Informado')]
 
 BC_SITUACAO_CHOICES = [('A','Ativo'), ('I','Inativo')]
 
@@ -54,7 +54,7 @@ class Graduacao(models.Model):
 
 class Cnh(models.Model):
 	cnh_numero = models.CharField(max_length=20, blank=True, null=True, verbose_name="Número da CNH:")
-	cnh_categoria = models.IntegerField(blank=True, null=True, choices=CNH_CATEGORIA_CHOICES, verbose_name="Categoria:")
+	cnh_categoria = models.IntegerField(default=9, choices=CNH_CATEGORIA_CHOICES, verbose_name="Categoria:")
 	cnh_validade = models.DateField(blank=True, null=True, verbose_name="Validade:")
 	cnh_condutor_emergencia = models.BooleanField(verbose_name="Condutor de Emergência?")
 	cnh_ultimo_cve = models.DateField(blank=True, null=True, verbose_name="Data do Último CVE:")
