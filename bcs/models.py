@@ -9,11 +9,11 @@ CNH_CATEGORIA_CHOICES = [	(0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'), (5, 
 BC_SITUACAO_CHOICES = [('A','Ativo'), ('I','Inativo')]
 
 USUARIO_ESTADO_CIVIL_CHOICES = [(0, 'Solteiro (a)'), (1, 'Casado (a)'), (2, 'Divorciado (a)'),
-								(3, 'Separado (a)'), (4, 'Viúvo (a)'), (5,'Outro')]
+								(3, 'Separado (a)'), (4, 'Viúvo (a)'), (5,'Outro'), (6,'Não Informado')]
 
 USUARIO_ESCOLARIDADE_CHOICES = [(0, 'Ensino Fundamental Incompleto'), (1, 'Ensino Fundamental Completo'),
 								(2, 'Ensino Médio Incompleto'), (3, 'Ensino Médio Completo'),
-								(4, 'Ensino Superior Incompleto'), (5, 'Ensino Superior Completo')]
+								(4, 'Ensino Superior Incompleto'), (5, 'Ensino Superior Completo'), (6, 'Não Informado')]
 
 
 class Uf(models.Model):
