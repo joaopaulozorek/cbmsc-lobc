@@ -73,6 +73,7 @@ class Bc(models.Model):
 	bc_data_formatura = models.DateField(blank=True, null=True, verbose_name="Data da Formatura:")
 	bc_data_ultima_promocao = models.DateField(blank=True, null=True, verbose_name="Data da Última Promoção:")
 	bc_situacao = models.BooleanField(default=True, verbose_name="Situação: (ativo/inativo)")
+	bc_bcp = models.BooleanField(default=False, verbose_name="Bombeiro Civil Profissional:")
 
 	bc_cnh = models.ForeignKey("Cnh", blank=True, null=True, on_delete=models.CASCADE, verbose_name="CNH:")
 	bc_mergulhador = models.BooleanField(blank=True, null=True, verbose_name="Mergulhador?")
@@ -100,7 +101,7 @@ class Usuario(models.Model):
 	usu_cpf = models.CharField(max_length=100, verbose_name="CPF:")
 	usu_rg = models.CharField(max_length=100, verbose_name="RG:")
 	usu_filiacao = models.CharField(max_length=600, verbose_name="Filiação:")
-	usu_estado_civil = models.IntegerField(blank=True, null=True, verbose_name="Estado civil:", choices=USUARIO_ESTADO_CIVIL_CHOICES)
+	usu_estado_civil = models.IntegerField(default=6, verbose_name="Estado civil:", choices=USUARIO_ESTADO_CIVIL_CHOICES)
 	usu_numero_filhos = models.IntegerField(verbose_name="Número de Filhos:")
 
 	# Informações de Contato
@@ -111,7 +112,7 @@ class Usuario(models.Model):
 	usu_email = models.EmailField(max_length = 254, verbose_name="E-mail:") 
 
 	# Informações Adicionais
-	usu_escolaridade = models.IntegerField(blank=True, null=True, choices=USUARIO_ESCOLARIDADE_CHOICES, verbose_name="Escolaridade:")
+	usu_escolaridade = models.IntegerField(default=6, choices=USUARIO_ESCOLARIDADE_CHOICES, verbose_name="Escolaridade:")
 	usu_area_de_formacao = models.CharField(max_length=200, blank=True, null=True, verbose_name="Área de Formação:")
 	usu_facebook = models.CharField(max_length=100, blank=True, null=True, verbose_name="Facebook:")
 	usu_instagram = models.CharField(max_length=100, blank=True, null=True, verbose_name="Instagram:")

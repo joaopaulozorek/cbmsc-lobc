@@ -4,6 +4,7 @@ from .models import *
 
 
 def bc_list(request):
+	bcs_por_cidade()
 	bcs = Bc.objects.all()
 	return render(request, 'bcs/bc_list.html', {'bcs':bcs})	
 
@@ -14,3 +15,9 @@ def bc_detail(request, user):
 	print(bc)
 
 	return render(request,'bcs/bc_detail.html',{'bc':bc})
+
+
+def bcs_por_cidade():
+	q = Bc.objects.all()
+	
+	print(q)
