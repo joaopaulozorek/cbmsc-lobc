@@ -1,0 +1,56 @@
+{% extends 'bcs/base.html' %}
+{%load static %}
+{% block content %}
+
+
+
+<section class="section">
+	<div class="hero">
+
+
+	</div>
+	<form method="post">
+		{% csrf_token %}
+		<div class="modal-card">
+			<header class="modal-card-head">
+				<p class="modal-card-title">Novo Usuário</p>
+			</header>
+			<section class="modal-card-body">
+				<div class="field">
+					<label class="label">Usuário</label>
+					<div class="control">
+						<input class="input" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username">
+					</div>
+					<p class="help"></p>
+				</div>  
+				<div class="field">
+					<label class="label">Senha:</label>
+					<div class="control">
+						<input class="input" type="password" name="password1" autocomplete="new-password" required id="id_password1">
+					</div>
+					<p class="help"></p>
+				</div>
+				<div class="field">
+					<label class="label">Confirme a senha:</label>
+					<div class="control">
+						<input class="input" type="password" name="password2" autocomplete="new-password" required id="id_password2">
+					</div>
+					<p class="help"></p>
+				</div>   
+
+				<div class="field is-grouped">
+					<div class="control">
+						<button type="submit" class="button is-link">Salvar</button>
+					</div>
+					<div class="control">
+						<button class="button is-link is-light">Cancelar</button>
+					</div>
+				</div>   
+			</section>
+
+		</div>
+	</form>
+</section>
+
+
+{% endblock %}

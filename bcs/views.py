@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 
@@ -19,5 +20,16 @@ def bc_detail(request, user):
 
 def bcs_por_cidade():
 	q = Bc.objects.all()
-	
+
 	print(q)
+
+
+def cadastro_usuario(request):
+	if request.method == "POST":
+		form_usuario = UserCreationForm(request.POST)
+		if form_usuario.is_valid():
+			form_usuario.save()
+			return redirect('bc_list')
+	else:
+		form_usuario = UserCreationForm()
+		return render(request, 'bcs/register.html', {'form_usuario': form_usuario})

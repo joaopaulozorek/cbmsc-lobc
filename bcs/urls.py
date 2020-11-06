@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
 	path('', views.bc_list, name='bc_list'),
 	path('bc/<user>', views.bc_detail, name='bc_detail'),
+	path('cadastro/usuario', views.cadastro_usuario, name="cadastro_usuario"),
     #path('', views.post_list, name='post_list'),
 ]
 if settings.DEBUG:
