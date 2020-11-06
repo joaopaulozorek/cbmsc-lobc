@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import *
 
 
@@ -33,3 +33,18 @@ def cadastro_usuario(request):
 	else:
 		form_usuario = UserCreationForm()
 		return render(request, 'bcs/register.html', {'form_usuario': form_usuario})
+
+
+def logar_usuario(request):
+	if request.method == "POST":
+		username = request.POST["username"]
+		password = request.POST["password"]
+		usuario = authenticate(request, username=username, password=password)
+		if usuario is not None:
+			login(request, usuario)
+			return redirect('bc_list')
+		else:
+			form_login = AuthenticationForm()
+	else:
+		form_login = AuthenticationForm()
+	return render(request, 'bcs/login.html', {'form_login': form_login})
