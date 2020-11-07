@@ -49,8 +49,9 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a href="{% url 'login' %}" class="button is-link">
-            <strong>Entrar</strong>
+
+          <a href="{% url 'logout' %}" class="button is-link">
+            <strong>{{ user.username }} (Sair)</strong>
           </a>
           <a href="{% url 'cadastro_usuario' %}" class="button is-dark">
             Cadastro

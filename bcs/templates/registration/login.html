@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LOBC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/bcs.css' %}">
+  </head>
+  <body>
+
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <h1 class="title has-text-centered">Login - LOBC</h1>
+          <form method="post" action="/accounts/login/" class="box">
+            {% if form.errors %}
+        <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+    {% endif %}
+            {% csrf_token %}
+            <div class="field">
+              <label class="label" for="id_username">Usuário:</label>
+              <div class="control has-icons-left">
+                <input type="text" class="input" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-at"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="id_password">Senha:</label>
+              <div class="control has-icons-left">
+                <input type="password" class="input" name="password" autocomplete="current-password" required id="id_password">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field has-text-centered">             
+                <input class="button is-link" type="submit" value="Entrar" />
+                <input type="hidden" name="next" value="" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+  </script>
+  <script src="https://kit.fontawesome.com/1991a555c4.js" crossorigin="anonymous"></script>
+
+</html>
