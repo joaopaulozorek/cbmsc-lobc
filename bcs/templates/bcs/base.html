@@ -12,9 +12,9 @@
 
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
+    <p class="navbar-item" href="/">
       <img src="https://www.cbm.sc.gov.br/images/imagens/Logo_pqueno.png" width="30">
-    </a>
+    </p>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -47,18 +47,34 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Perfil
+        </a>
 
-          <a href="{% url 'logout' %}" class="button is-link">
-            <strong>{{ user.username }} (Sair)</strong>
-          </a>
-          <a href="{% url 'cadastro_usuario' %}" class="button is-dark">
-            Cadastro
-          </a>
+        <div class="navbar-dropdown is-right">
+          <div class="navbar-item">
+            <p>Entrou como: </p>
+          </div>
+          <div class="navbar-item">
+            <p class="subtitle"><strong> {{ user.username }}</strong></p>
+          </div>
+          <div class="navbar-item">
+            <a href="{% url 'logout' %}" class="button is-fullwidth is-danger is-light">
+            Sair do Sistema
+          </a> 
+          </div>
+          
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <a class="button is-info is-fullwidth is-light">
+            Editar Perfil
+          </a> 
+          </div>
+          
         </div>
       </div>
-    </div>
+      
   </div>
 </nav>
   {% block content %}
