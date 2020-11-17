@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 
-
+@login_required
 def index(request):
 	return render(request, 'bcs/paginas/pesquisa.html')
 

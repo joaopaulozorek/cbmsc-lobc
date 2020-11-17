@@ -14,17 +14,20 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <h1 class="title has-text-centered">Login - LOBC</h1>
+        <div class="column is-5-tablet is-4-desktop is-5-widescreen">
+          <h1 class="title has-text-centered">Sistema LOBC</h1>
+          <h1 class="subtitle has-text-centered">Localize o Bombeiro Comunitário</h1>
           <form method="post" action="/accounts/login/" class="box">
+            <h1 class="title has-text-centered">Entrar</h1>
             {% if form.errors %}
-        <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+        <h1 class='is-link'>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</h1>
+        <br>
     {% endif %}
             {% csrf_token %}
             <div class="field">
               <label class="label" for="id_username">Usuário:</label>
               <div class="control has-icons-left">
-                <input type="text" class="input" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                <input type="text" class="input is-rounded is-medium" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
                 <span class="icon is-small is-left">
                   <i class="fa fa-at"></i>
                 </span>
@@ -33,19 +36,34 @@
             <div class="field">
               <label class="label" for="id_password">Senha:</label>
               <div class="control has-icons-left">
-                <input type="password" class="input" name="password" autocomplete="current-password" required id="id_password">
+                <input type="password" class="input is-rounded is-medium" name="password" autocomplete="current-password" required id="id_password">
                 <span class="icon is-small is-left">
                   <i class="fa fa-lock"></i>
                 </span>
               </div>
             </div>
+            <br>
             <div class="field has-text-centered">             
-                <input class="button is-link" type="submit" value="Entrar" />
+                <input class="button is-fullwidth is-link is-rounded is-medium" type="submit" value="Entrar" />
                 <input type="hidden" name="next" value="" />
             </div>
+            <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <a href="#">Esqueceu a Senha?</a>
+              </div>
+            </div>
+            
+          </nav>
+
+            
           </form>
         </div>
       </div>
+      
+            <div class="field has-text-centered">             
+                <input class="button is-rounded is-medium" value="Cadastro" />
+            </div>
     </div>
   </div>
 </section>
