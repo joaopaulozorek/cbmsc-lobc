@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-	path('', views.bc_list, name='bc_list'),
+	#path('', views.bc_list, name='bc_list'),
+	path('', views.index, name='index'),
 	path('bc/<user>', views.bc_detail, name='bc_detail'),
 	path('cadastro/usuario', views.cadastro_usuario, name="cadastro_usuario"),
 	path('login', views.logar_usuario, name="login1"),

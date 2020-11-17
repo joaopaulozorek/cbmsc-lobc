@@ -4,6 +4,12 @@ from .models import *
 
 
 
+def index(request):
+	return render(request, 'bcs/paginas/pesquisa.html')
+
+
+
+
 def bc_list(request):
 	bcs_por_cidade()
 	bcs = Bc.objects.all()
@@ -42,7 +48,7 @@ def logar_usuario(request):
 		usuario = authenticate(request, username=username, password=password)
 		if usuario is not None:
 			login(request, usuario)
-			return redirect('bc_list')
+			return redirect('index')
 		else:
 			form_login = AuthenticationForm()
 	else:
